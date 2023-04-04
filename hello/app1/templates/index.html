@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block start %}
+
+
+<div class="container">
+    
+    <h1>Welcome to the Employee management system</h1>
+
+</div>   
+    <div class="container">
+        <table class="table table-bordered bg-dark-subtle">
+            <thead>
+              <tr>
+                <th scope="col">Sr. No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">age</th>
+                <th scope="col">Can vote</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for employee in employees %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{employee.name}}</td>
+                <td>{{employee.age}}</td>
+                <td>
+                    {% if employee.age < 18 %}  
+                    NO
+                    {% else %}
+                    YES
+                    {% endif %}
+                </td>
+
+              </tr>
+             
+              {% endfor %}
+             
+            </tbody>
+          </table>
+    </div>
+
+{% endblock %}
