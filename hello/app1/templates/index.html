@@ -18,6 +18,7 @@
 
 </div>   
     <div class="container mt-5">
+      <!-- FORM -->
       <form class=" col-6 mx-auto card  shadow-lg" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group mb-3">
@@ -50,4 +51,41 @@
       </form>
     </div>
 
+    <div class="container ">
+      <!-- TABLE -->
+      <!-- TABLE -->
+
+      <table class="table mt-5 shadow-lg bg-body-tertiary">
+        <thead>
+          <tr>
+            <th scope="col">Sr.No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Photo</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        {% for employee in employees %}
+        <tbody>
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{employee.name}}</td>
+            <td>{{employee.age}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.address}}</td>
+            <td>
+              <img src="/media/{{employee.photo}}" style="height: 100px;">
+            </td>
+            <td>
+              <a href="delete/{{employee.id}}/" class="btn btn-danger">Delete</a>
+            </td>
+            
+          </tr>
+          
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
 {% endblock %}

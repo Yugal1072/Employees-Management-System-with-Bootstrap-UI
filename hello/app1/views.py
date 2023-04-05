@@ -1,10 +1,11 @@
 from django.shortcuts import render,redirect
+from django.http import HttpResponse
 from app1.models import Employees
 
 # Create your views here.
 
 def home(request):
-    context = {'page': "Home"}
+    # title = {'page': "Home"}
     if request.method == "POST":
         data = request.POST
         
@@ -22,7 +23,17 @@ def home(request):
             photo = photo,
             )
         return redirect('/about/')   
-    return render(request, 'index.html',context)
+
+    query_set = Employees.objects.all()
+    context = {'employees': query_set}
+
+    return render(request, 'index.html', context)
+
+
+def delete(request,id):
+    queryset = Employees.objects.filter(id = id)
+    queryset.delete()
+    return HttpResponse('HEllo your entry has been deleted')
 
 def about(request):
     context = {'page': "About"}
