@@ -1,16 +1,28 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from app1.models import Employees
+
 # Create your views here.
 
 def home(request):
-    
-    employees = [
-        {'name': 'yugal govind','age':26},
-        {'name': 'aman dhole','age':18},
-        {'name': 'ronit govind','age':29},
-        {'name': 'sunita govind','age':48},
-    ]
-    for employee in employees:
-        return render(request, 'index.html',context={'employees':employees, 'page': 'Home'})
+    context = {'page': "Home"}
+    if request.method == "POST":
+        data = request.POST
+        
+        name = data.get("name")
+        age = data.get("age")
+        email = data.get("email")
+        address = data.get("address")
+        photo = request.FILES.get('photo')
+
+        Employees.objects.create(
+            name = name,
+            age = age,
+            email = email,
+            address = address,
+            photo = photo,
+            )
+        return redirect('/about/')   
+    return render(request, 'index.html',context)
 
 def about(request):
     context = {'page': "About"}

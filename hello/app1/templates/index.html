@@ -2,42 +2,52 @@
 
 {% block start %}
 
+<style>
+  .form-group{
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(136, 134, 131);
+    border-radius: 10px;
+    
+  }
 
+</style>
 <div class="container">
     
-    <h1>Welcome to the Employee management system</h1>
+    <h1 style="text-align: center; background-color: cadetblue; color: white; padding: 10px;">Welcome to the Employee management system</h1>
 
 </div>   
-    <div class="container">
-        <table class="table table-bordered bg-dark-subtle">
-            <thead>
-              <tr>
-                <th scope="col">Sr. No.</th>
-                <th scope="col">Name</th>
-                <th scope="col">age</th>
-                <th scope="col">Can vote</th>
-              </tr>
-            </thead>
-            <tbody>
-                {% for employee in employees %}
-              <tr>
-                <th scope="row">{{forloop.counter}}</th>
-                <td>{{employee.name}}</td>
-                <td>{{employee.age}}</td>
-                <td>
-                    {% if employee.age < 18 %}  
-                    NO
-                    {% else %}
-                    YES
-                    {% endif %}
-                </td>
-
-              </tr>
-             
-              {% endfor %}
-             
-            </tbody>
-          </table>
+    <div class="container mt-5">
+      <form class=" col-6 mx-auto card  shadow-lg" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group mb-3">
+          <label name="" for="exampleInput">Name</label>
+          <input name="name" type="text" required class="form-control" id="exampleInput" placeholder="Enter your Name">
+        
+        <div class="form-group mb-3">
+          <label name="" for="exampleInput">Age</label>
+          <input name="age" type="number" required class="form-control" id="exampleInput" placeholder="Enter your Age">
+        
+        </div>
+        <div class="form-group mb-3">
+          <label name="" for="exampleInput">Email</label>
+          <input name="email" type="email" required class="form-control" id="exampleInput" placeholder="Enter your Email">
+        </div>
+        <div class="form-group mb-3">
+          <label name="" for="exampleInput">Address</label>
+          <textarea class="form-control" name="address"> </textarea> 
+        
+        </div>
+        <div class="form-group mb-3">
+          <label name="" for="exampleInput">Upload Photo</label>
+          <input name="photo" type="file" class="form-control" id="exampleInput" placeholder="Upload your photo">
+        </div>
+        <div class="form-group mb-3">
+          <input name="check" type="checkbox" required class="form-check-input" id="exampleInput">
+          <label name="" class="form-check-label" for="exampleCheck1">Agree to all terms and Condition</label>
+        </div>
+        <button type="submit" class="btn btn-success">Add Employee</button>
+      </form>
     </div>
 
 {% endblock %}
