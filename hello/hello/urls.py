@@ -24,7 +24,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home, name='home'),
-    path('delete/<str:id>',delete, name='delete'), #That id is a dynamic route
+    path('delete/<id>/',delete, name='delete'), #That id is a dynamic route
     path('about/',about, name='about'),
     path('contact/',contact, name='contact'),
     path('blog/',blog, name='blog'),

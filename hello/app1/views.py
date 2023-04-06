@@ -22,7 +22,7 @@ def home(request):
             address = address,
             photo = photo,
             )
-        return redirect('/about/')   
+        return redirect('/')   
 
     query_set = Employees.objects.all()
     context = {'employees': query_set}
@@ -31,9 +31,9 @@ def home(request):
 
 
 def delete(request,id):
-    queryset = Employees.objects.filter(id = id)
+    queryset = Employees.objects.get(id = id)
     queryset.delete()
-    return HttpResponse('HEllo your entry has been deleted')
+    return redirect("/")
 
 def about(request):
     context = {'page': "About"}
