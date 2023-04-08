@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home, name='home'),
     path('delete/<id>/',delete, name='delete'), #That id is a dynamic route
+    path('update/<id>/',update, name='update'), #That id is a dynamic route
     path('about/',about, name='about'),
     path('contact/',contact, name='contact'),
     path('blog/',blog, name='blog'),

@@ -22,9 +22,12 @@
       <form class=" col-6 mx-auto card  shadow-lg" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group mb-3">
+
+          <div class="form-group mb-3">
           <label name="" for="exampleInput">Name</label>
           <input name="name" type="text" required class="form-control" id="exampleInput" placeholder="Enter your Name">
-        
+        </div>
+
         <div class="form-group mb-3">
           <label name="" for="exampleInput">Age</label>
           <input name="age" type="number" required class="form-control" id="exampleInput" placeholder="Enter your Age">
@@ -78,13 +81,16 @@
               <img src="/media/{{employee.photo}}" style="height: 100px;">
             </td>
             <td>
-              <a href="delete/{{employee.id}}/" class="btn btn-danger">Delete</a>
+              <a href="/delete/{{employee.id}}/" class="btn btn-danger">Delete</a>
+              <a href="/update/{{employee.id}}/" class="btn btn-success">Update</a>
             </td>
-            
-          </tr>
-          
+          </tr> 
         </tbody>
+
         {% endfor %}
       </table>
     </div>
+
+
 {% endblock %}
+

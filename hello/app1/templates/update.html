@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block start %}
+
+<style>
+  .form-group{
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(136, 134, 131);
+    border-radius: 10px;
+    
+  }
+
+</style>
+<div class="container">
+    
+    <h1 style="text-align: center; background-color: cadetblue; color: white; padding: 10px;">Welcome to the Employee management system</h1>
+
+</div>   
+    <div class="container   mt-5">
+      <!-- FORM -->
+      <form class=" col-6 mx-auto card  shadow-lg" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 style="text-align: center; text-decoration: underline; padding: 5px;">UPDATE </h2>
+        
+
+        <div class="form-group mb-3">   
+          <label name="" for="exampleInput">Name</label>
+          <input name="name" type="text"  value="{{employees.name}}" required class="form-control"  >
+        </div>   
+
+        <div class="form-group mb-3">
+          <label name="" for="exampleInput">Age</label>
+          <input name="age" type="number" value="{{employees.age}}" required  class="form-control"  >
+        
+        </div>
+        <div class="form-group mb-3">
+          <label name="" for="exampleInput">Email</label>
+          <input name="email" type="email" value="{{employees.email}}"  required class="form-control"  >
+        </div>
+        <div class="form-group mb-3">
+          <label name="" for="exampleInput">Address</label>
+          <textarea class="form-control" value="" name="address">{{employees.address}}</textarea> 
+        
+        </div>
+        <div class="form-group mb-3">
+          <label name="" for="exampleInput">Upload Photo</label>
+          <input name="photo" type="file" value="{{employees.photo}}" class="form-control" >
+        </div>
+        <div class="form-group mb-3">
+          <input name="check" type="checkbox" required class="form-check-input">
+          <label name="" class="form-check-label" for="exampleCheck1">Agree to all terms and Condition</label>
+        </div>
+        <button type="submit" class="btn btn-success">Update Employee</button>
+      </form>
+    </div>
+
+    
+{% endblock %}

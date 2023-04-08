@@ -35,6 +35,32 @@ def delete(request,id):
     queryset.delete()
     return redirect("/")
 
+def update(request,id):
+
+    queryset = Employees.objects.get(id = id)
+    if request.method == "POST":
+        data = request.POST
+        
+        name = data.get("name")
+        age = data.get("age")
+        email = data.get("email")
+        address = data.get("address")
+        photo = request.FILES.get('photo')
+        
+        queryset.name = name
+        queryset.age = age
+        queryset.email = email
+        queryset.address = address
+
+        if photo:
+           queryset.photo = photo
+           
+        queryset.save()
+        return redirect("/")
+
+    context = {'employees': queryset}
+    return render(request,"update.html", context)
+
 def about(request):
     context = {'page': "About"}
     return render(request, 'about.html', context)
