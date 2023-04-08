@@ -29,6 +29,8 @@ urlpatterns = [
     path('about/',about, name='about'),
     path('contact/',contact, name='contact'),
     path('blog/',blog, name='blog'),
+    path('login/',login, name='login'),
+    path('register/',register, name='register'),
 ]
 
 if settings.DEBUG:

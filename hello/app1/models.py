@@ -1,8 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 class Employees(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     # id = models.AutoField()
     name = models.CharField(max_length=250)
     age = models.IntegerField(default=18)
