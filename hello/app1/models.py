@@ -15,7 +15,7 @@ class Employees(models.Model):
     
 # class Department(models.Model):
 #     dept = models.CharField(max_length=200)
-#     project = models.TextField()
+#      project = models.TextField()
 #     tech = models.CharField(max_length=100)
 #     duration = models.IntegerField(default=3)
 

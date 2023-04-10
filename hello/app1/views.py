@@ -4,9 +4,12 @@ from app1.models import Employees
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
+@login_required(login_url="/login/")
 def home(request):
     # title = {'page': "Home"}
     if request.method == "POST":
@@ -91,7 +94,7 @@ def login_page(request):
 
         user = authenticate(username = username, password = password)
 
-        if user is None:
+        if user is  None:
             messages.error(request, "Invalid Password")
             return redirect("/login/")
         else:
@@ -128,5 +131,5 @@ def register(request):
         user.save()
         messages.info(request,"Account Created Successfully")
 
-        return redirect("/register/")
+        return redirect("/login/")
     return render(request,"register.html")
