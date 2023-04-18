@@ -12,10 +12,18 @@
 </style>
 
    
-    <div class="container  mt-5">
+    <div class="container p-3 mt-5 text-bg-light">
       <!-- FORM -->
       <form class=" col-6 mx-auto card  shadow-lg p-5" method="post" enctype="multipart/form-data">
         {% csrf_token %}
+        {% if messages %}
+        <div class="alert alert-danger" role="alert">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+            
+        {% endif %}
         
         <h2 class="bg-dark text-bg-dark" style="text-align: center; padding: 10px;">Log-in</h2>
         <div class="form-group">
